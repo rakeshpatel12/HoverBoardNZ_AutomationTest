@@ -1,10 +1,16 @@
 package com.qa.hover.util;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,7 +26,7 @@ public class ElementUtil {
 	}
 	
 	public WebElement getElement(By locator) {
-		WebElement element = null;
+		WebElement element = null ;
 		try {
 		element = driver.findElement(locator);
 		}catch(Exception e) {
@@ -45,6 +51,36 @@ public class ElementUtil {
 	
 	public void waitForElementPresent(By locator) {
 		wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+	}
+	
+	
+	/**
+	 * Java Script Click 
+	 * @param locator
+	 */
+	public void clickElementByJS(By locator)
+	{
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();",getElement(locator));
+	}
+	/**
+	 * JS Scroll Pg Down
+	 */
+	
+	public void scrollByPixel()
+	{
+	
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,500)");
+	}
+	
+	
+	/**
+	 * Actioon class click
+	 */
+	public void doClickAction(By locator) {
+		Actions action = new Actions(driver);
+		action.click(getElement(locator)).perform();
 	}
 
 	/**
@@ -84,6 +120,35 @@ public class ElementUtil {
 		select.selectByVisibleText(value);	
 		return select.getFirstSelectedOption().getText();
 	}
+	
+	/**
+	 * Check Active links or broken link on page
+	 * @param links
+	 */
+	public void getActiveLinks(List<WebElement> links) {
+		
+		for(int i =0;i<links.size();i++) {
+			
+			URL url;
+			try {
+				url = new URL(links.get(i).getAttribute("href"));
+				HttpURLConnection httpconnection = (HttpURLConnection) url.openConnection();
+				httpconnection.connect();
+				String msg = httpconnection.getResponseMessage();
+				//int code = httpconnection.getResponseCode();
+				httpconnection.disconnect();
+				System.out.println(links.get(i).getAttribute("href")+ " ----> " + msg);
+			} catch (MalformedURLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+	}
+	
 	
 	
 }

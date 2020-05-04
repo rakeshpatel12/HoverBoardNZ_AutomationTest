@@ -1,37 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="36085" started-at="2020-04-26T10:32:42Z" finished-at="2020-04-26T10:33:18Z">
+  <suite name="Default suite" duration-ms="38095" started-at="2020-05-03T08:15:30Z" finished-at="2020-05-03T08:16:08Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="36085" started-at="2020-04-26T10:32:42Z" finished-at="2020-04-26T10:33:18Z">
-      <class name="com.qa.hover.test.TaskPage1Test">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.hover.test.TaskPage1Test@1593948d]" name="setUp" is-config="true" duration-ms="17461" started-at="2020-04-26T22:32:42Z" finished-at="2020-04-26T22:32:59Z">
+    <test name="Default test" duration-ms="38095" started-at="2020-05-03T08:15:30Z" finished-at="2020-05-03T08:16:08Z">
+      <class name="com.qa.hover.test.testclass">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.hover.test.testclass@724af044]" name="setUp" is-config="true" duration-ms="30277" started-at="2020-05-03T20:15:30Z" finished-at="2020-05-03T20:16:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="SearchForHoverBoardtest()[pri:1, instance:com.qa.hover.test.TaskPage1Test@1593948d]" name="SearchForHoverBoardtest" duration-ms="7204" started-at="2020-04-26T22:32:59Z" finished-at="2020-04-26T22:33:07Z">
+        <test-method status="PASS" signature="test1()[pri:0, instance:com.qa.hover.test.testclass@724af044]" name="test1" duration-ms="7031" started-at="2020-05-03T20:16:01Z" finished-at="2020-05-03T20:16:08Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- SearchForHoverBoardtest -->
-        <test-method status="PASS" signature="printAllHoverBoardValueAndPriceTest()[pri:2, instance:com.qa.hover.test.TaskPage1Test@1593948d]" name="printAllHoverBoardValueAndPriceTest" duration-ms="5924" started-at="2020-04-26T22:33:07Z" finished-at="2020-04-26T22:33:12Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- printAllHoverBoardValueAndPriceTest -->
-        <test-method status="PASS" signature="lowestValueHoverBoardNameTest()[pri:3, instance:com.qa.hover.test.TaskPage1Test@1593948d]" name="lowestValueHoverBoardNameTest" duration-ms="2294" started-at="2020-04-26T22:33:12Z" finished-at="2020-04-26T22:33:15Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- lowestValueHoverBoardNameTest -->
-        <test-method status="PASS" signature="highestValueHoverBoardNameTest()[pri:4, instance:com.qa.hover.test.TaskPage1Test@1593948d]" name="highestValueHoverBoardNameTest" duration-ms="2431" started-at="2020-04-26T22:33:15Z" finished-at="2020-04-26T22:33:17Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- highestValueHoverBoardNameTest -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.qa.hover.test.TaskPage1Test@1593948d]" name="tearDown" is-config="true" duration-ms="748" started-at="2020-04-26T22:33:17Z" finished-at="2020-04-26T22:33:18Z">
+        </test-method> <!-- test1 -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.qa.hover.test.testclass@724af044]" name="tearDown" is-config="true" duration-ms="762" started-at="2020-05-03T20:16:08Z" finished-at="2020-05-03T20:16:08Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.qa.hover.test.TaskPage1Test -->
+      </class> <!-- com.qa.hover.test.testclass -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

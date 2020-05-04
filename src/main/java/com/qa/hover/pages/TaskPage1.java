@@ -139,5 +139,10 @@ public class TaskPage1 extends BasePage{
 		return highvalue;
 	}
 		
+	public TaskPage2 gotoTaskPage2() {
+		SearchForHoverBoard();
+		return new TaskPage2(driver);
+	}
+
 	
 }
