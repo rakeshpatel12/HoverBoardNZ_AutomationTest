@@ -31,7 +31,7 @@ public class ElementUtil {
 		element = driver.findElement(locator);
 		}catch(Exception e) {
 			
-		System.out.println("Some error occorued while creating element :" + element);
+		System.out.println("Some error occorued while creating element :" + locator);
 		}
 		return element;
 	}
@@ -108,7 +108,7 @@ public class ElementUtil {
 		elements = driver.findElements(locator);
 		}catch(Exception e) {
 			
-		System.out.println("Some error occorued while creating element :" + elements);
+		System.out.println("Some error occorued while creating element :" + locator);
 		}
 		return elements;
 	}

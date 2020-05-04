@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -45,6 +46,8 @@ public class CategoryLinkCheckPage3 extends BasePage{
 	By self_balancing_scooter = By.xpath("//div[@id='primary']/following::aside[1]/ul/li[17]/a");
 	By hoverboard_white = By.xpath("//div[@id='primary']/following::aside[1]/ul/li[18]/a");
 	
+	//Page check Xpath
+	By pgcheck = By.xpath("//div[@class='shop-loop-after clearfix']//ul/li"); 
 	
 	public CategoryLinkCheckPage3(WebDriver driver){
 		this.driver=driver;
@@ -60,12 +63,7 @@ public class CategoryLinkCheckPage3 extends BasePage{
 		elementutil.getActiveLinks(list1);
 			
 		}
-	
-	
-	
-	
-	
-	
+		
 	//All collection link check
 	/**
 	 * Function to get all the elements and 
@@ -84,6 +82,55 @@ public class CategoryLinkCheckPage3 extends BasePage{
 		System.out.println("--------------------------------------------------------------------");
 		elementutil.getActiveLinks(list1);		
 	}
+	
+	/**
+	 * link check for next page products
+	 * @param category
+	 * @param product
+	 */
+	public void linkCheckProduct(By category, By product) {
+		elementutil.waitForElementPresent(product);
+		System.out.println("Page URL: - " + elementutil.doGetCurrentUrl());
+		List<WebElement> list1 = elementutil.getElements(product);
+		System.out.println("\n Checking Links for "+ elementutil.getElement(category).getText()+
+				" total product "+ list1.size());
+		System.out.println("--------------------------------------------------------------------");
+		elementutil.getActiveLinks(list1);		
+	}
+	
+	// Click on Next Page
+	public void clickNextPage(By category, By product) {
+		List<WebElement> pg = elementutil.getElements(pgcheck);
+		
+		for(int i=1;i<pg.size()-1;i++)
+		{
+			//System.out.println(pgsize);
+			//elementutil.waitForElementPresent(pages);
+			String s = String.valueOf(i+1);
+			By link1 = By.linkText(s);
+			//System.out.println(link1);
+			try {
+			    // e1 = elementutil.getElement(link1);
+			    elementutil.waitForElementPresent(link1);
+			   // e1.click();
+			   elementutil.clickElementByJS(link1);
+			   System.out.println("Going to Next Page to Check Links.");
+			   linkCheckProduct(category,product);
+			   
+			   //System.out.println(elementutil.doGetCurrentUrl());
+			}catch (StaleElementReferenceException e) {
+				//e1 = elementutil.getElement(link1);
+			    elementutil.waitForElementPresent(link1);
+			    elementutil.clickElementByJS(link1);
+			   // elementutil.waitForElementPresent(pgcheck);
+			   // System.out.println(elementutil.getElement(items).getText());
+			    System.out.println(elementutil.doGetCurrentUrl());
+			}
+		}
+
+			
+	}
+	
 	
 	public void linkCheck_10InchHoverBoard() {
 		linkCheck(teninchhoverboard, hoverboardproduct);
@@ -156,11 +203,15 @@ public class CategoryLinkCheckPage3 extends BasePage{
 
 	public void linkCheck_Segways() {
 		linkCheck(segways, hoverboardproduct);
+		clickNextPage(segways, hoverboardproduct);
+
 	}
 
 	public void linkCheck_Self_Balancing_Scooter() {
 		elementutil.scrollByPixel();
 		linkCheck(self_balancing_scooter, hoverboardproduct);
+		clickNextPage(self_balancing_scooter, hoverboardproduct);
+		
 	}
 
 	public void linkCheck_HoverBoard_White() {
